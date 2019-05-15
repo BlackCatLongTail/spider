@@ -1,0 +1,5 @@
+.pytest_cache
+cached_mtime
+cached_pic
+test.py
+.idea
