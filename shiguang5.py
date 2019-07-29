@@ -80,6 +80,12 @@ def movie_from_div(div):
     m = Movie()
     m.name = e('.mov_con a').text()
     m.score = e('.mov_point .point').text()
+
+    try:
+        m.score = float(m.score)
+    except ValueError:
+        m.score = 0
+
     m.quote = e('.mov_con .mt3').text()
     m.cover_url = e('.mov_pic img').attr('src')
     m.ranking = e('.number em').text()

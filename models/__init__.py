@@ -77,9 +77,20 @@ class SQLMixin(object):
         return ms
 
     @classmethod
+    def find_all(cls, sql_expression):
+        ms = cls.query.filter(sql_expression, cls.deleted == False).all()
+        return ms
+
+    @classmethod
     def one(cls, **kwargs):
         kwargs['deleted'] = False
         m = cls.query.filter_by(**kwargs).first()
+        return m
+
+    @classmethod
+    def find_one(cls, sql_expression):
+        # kwargs['deleted'] = False
+        m = cls.query.filter(sql_expression, cls.deleted == False).first()
         return m
 
     @classmethod
